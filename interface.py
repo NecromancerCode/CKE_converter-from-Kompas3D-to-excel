@@ -6,6 +6,8 @@ import tkinter as tk
 import tkinter.scrolledtext as st
 from table import save_file 
 
+#для теста
+
 def interface():
 
     def clicked_folder():      
