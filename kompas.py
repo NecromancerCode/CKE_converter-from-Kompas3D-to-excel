@@ -76,6 +76,3 @@ def parts_info(Part7, PartCollection):
             parts_array.append(workPart.Name)
             info.append(detail_info(Part7, workPart))
     return(info)
-
-document_path = 'C:/Users/odrin/Desktop/мар/верхняя часть.a3d'
-print(parse_detail_info(document_path))
