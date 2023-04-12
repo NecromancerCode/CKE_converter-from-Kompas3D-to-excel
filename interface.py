@@ -17,8 +17,9 @@ def interface():
         
     def clicked_final():  
         fnkomp = txt1.get()
-        fnxl = txt2.get() 
-        #  
+        fnxl = txt2.get()
+        f = open('tr.txt','w')
+        f.write(fnkomp, "\n", fnxl) 
         save_file()
 
     window = Tk()  # открытие окна
@@ -63,3 +64,6 @@ def interface():
     btn3.grid(column=1, row=12)
 
     window.mainloop() #закрытие окна
+
+
+    
