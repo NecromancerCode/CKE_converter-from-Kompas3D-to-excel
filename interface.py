@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import subprocess
 from tkinter import Label, Button, Entry, Tk, font, scrolledtext, filedialog
@@ -19,8 +20,7 @@ def interface():
         fnkomp = txt1.get()
         fnxl = txt2.get()
         f = open('tr.txt','w')
-        f.write(fnkomp, "\n", fnxl) 
-        save_file()
+        f.write(fnkomp + "\n" + fnxl) 
 
     window = Tk()  # открытие окна
     window.title("Конвертор KOMPAC v.21")  
@@ -65,5 +65,5 @@ def interface():
 
     window.mainloop() #закрытие окна
 
-
+interface()
     

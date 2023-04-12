@@ -1,2 +1,3 @@
-C:/Users/Dinner/Documents/pan cross head_am_B18.6.7M - M2 x 0.step.SLDPRT
-C:/Users/Dinner/Documents/545.SLDPRTm.step.SLDPRT
+C:/Users/odrin/Desktop/макросф/Приложение/Сборка платформа упрощенная.a3d
+C:/Users/odrin/Desktop/макросф/Приложение/test.xlsx
+
