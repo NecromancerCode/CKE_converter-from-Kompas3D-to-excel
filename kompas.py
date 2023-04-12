@@ -77,4 +77,4 @@ def parts_info(Part7, PartCollection):
             info.append(detail_info(Part7, workPart))
     return(info)
 
-print(parse_detail_info("C:/Users/odrin/Desktop/макросф/Приложение/Сборка платформа упрощенная.a3d"))
+#print(parse_detail_info("C:/Users/odrin/Desktop/макросф/Приложение/Сборка платформа упрощенная.a3d"))
