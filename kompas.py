@@ -19,7 +19,7 @@ def is_running():
     return True if proc_list else False
 
 # Функция получения активного документа - ссылки на сборку
-def parse_detail_info(doc_path):
+def parse_detail_info(doc_path, settings):
     is_run = is_running()  # Проверка запуска компаса. True, если программа Компас уже запущена
 
     module7, api7, const7 = get_kompas_api7()  # Подключаемся к программе
@@ -35,24 +35,24 @@ def parse_detail_info(doc_path):
     iPart7 = doc3D.TopPart
     iPartCollection7 = iPart7.Parts  # Получим указатель на список всех элементов, входящих в сборку
    
-    info = parts_info(iPart7, iPartCollection7, module7)    # Запустим парсинг информации о каждой детали
+    info = parts_info(iPart7, iPartCollection7, module7, settings)    # Запустим парсинг информации о каждой детали
 
     if not is_run: app7.Quit()  # Закрываем программу при необходимости
     return info  # Вернем массив информации о каждой детали для записи
 
 # Функция перебора каждого элемента сборки
-def parts_info(Part7, PartCollection, module7):
+def parts_info(Part7, PartCollection, module7, settings):
     parts_array = []
     info = []
     for num in range(len(PartCollection)):  
         workPart = PartCollection.Part(num)    # Цикл перебора деталей
         if workPart.Name not in parts_array:    # Если деталь до этого не встречалась, берем в работу
             parts_array.append(workPart.Name)   
-            info.append(detail_info(Part7, workPart, module7))   # Вызовем функцию получения информации о детали
+            info.append(detail_info(Part7, workPart, module7, settings))   # Вызовем функцию получения информации о детали
     return(info)  # Вернем массив с массивами информации о каждой детали
 
 # Функция получения информации о деталях
-def detail_info(Part7, Part, module7):
+def detail_info(Part7, Part, module7, settings):
     # Подключим интерфейс для листовых тел, если они есть
     try:
         MetalContainer = Part._oleobj_.QueryInterface(module7.ISheetMetalContainer.CLSID, pythoncom.IID_IDispatch)
@@ -80,5 +80,11 @@ def detail_info(Part7, Part, module7):
     measure = 'шт.'
     entry = Part7.Marking
     # Запишем полученные данные в массив
-    row_text = [dse, marking, value, measure, entry, material]
+    row_text=[]
+    if settings[0]: row_text.append(dse)
+    if settings[1]: row_text.append(marking)
+    if settings[2]: row_text.append(value)
+    if settings[3]: row_text.append(measure)
+    if settings[4]: row_text.append(entry)
+    if settings[5]: row_text.append(material)
     return row_text  # Вернем массив информации о конкретной детали
