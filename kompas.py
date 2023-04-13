@@ -33,17 +33,23 @@ def parse_detail_info(doc_path):
                                    ReadOnly=True)  # Откроем файл в видимом режиме без права его изменять
     doc3D = module7.IKompasDocument3D(doc7)
     iPart7 = doc3D.TopPart
-    sbPartCollection = iPart7.Parts
-    #MetalContainer = sbPartCollection._oleobj_.QueryInterface(module7.ISheetMetalContainer.CLSID, pythoncom.IID_IDispatch)
-    #MetalContainer = module7.ISheetMetalContainer(MetalContainer)
-    #MetalBodies = MetalContainer.SheetMetalBodies
-    info = parts_info(iPart7, sbPartCollection)
+    iPartCollection7 = iPart7.Parts
+   
+    info = parts_info(iPart7, iPartCollection7, module7)
 
     if not is_run: app7.Quit()  # Закрываем программу при необходимости
     return info
 
 
-def detail_info(Part7, Part):
+def detail_info(Part7, Part, module7):
+
+    try:
+        MetalContainer = Part._oleobj_.QueryInterface(module7.ISheetMetalContainer.CLSID, pythoncom.IID_IDispatch)
+        MetalContainer = module7.ISheetMetalContainer(MetalContainer)
+        Bodies = MetalContainer.SheetMetalBodies
+        Body = Bodies.SheetMetalBody(0)
+    except:
+        Body = None
 
     number, dse, marking, value, measure, entry, material, note = 0, '', '', 0, '', '', '', ''
 
@@ -55,9 +61,8 @@ def detail_info(Part7, Part):
         material = Part.Material
     else:
         dse = 'Дет.'
-        material = Part.Material
-        #if MetalBodies.SheetMetalBody(0) != None:
-            #material = material + ' ' + str(MetalBodies.SheetMetalBody(0).Thickness) + ' мм'
+        if Body != None:
+            material = Part.Material + ', ' + str(Body.Thickness) + ' мм'
     marking = Part.Marking
     number = number+1
     value = Part7.InstanceCount(Part)
@@ -67,14 +72,12 @@ def detail_info(Part7, Part):
     row_text = [dse, marking, value, measure, entry, material]
     return row_text
 
-def parts_info(Part7, PartCollection):
+def parts_info(Part7, PartCollection, module7):
     parts_array = []
     info = []
     for num in range(len(PartCollection)):
         workPart = PartCollection.Part(num)
         if workPart.Name not in parts_array:
             parts_array.append(workPart.Name)
-            info.append(detail_info(Part7, workPart))
+            info.append(detail_info(Part7, workPart, module7))
     return(info)
-
-#print(parse_detail_info("C:/Users/odrin/Desktop/макросф/Приложение/Сборка платформа упрощенная.a3d"))
