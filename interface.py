@@ -20,6 +20,7 @@ def interface():
         fnkomp = txt1.get()
         fnxl = txt2.get()
         f = open('tr.txt','w', encoding='utf-8')
+
         f.write(fnkomp + "\n" + fnxl + "\n" + str(mass).replace('[', '').replace(']', '')) # отсев ковычек из массива
 
     def clicked_eng():
@@ -105,6 +106,8 @@ def interface():
         else: mass[4] = 0
         if chk_state6.get() == 1: mass[5] = 1
         else: mass[5] = 0
+        f.write(fnkomp + "\n" + fnxl) 
+        window.destroy()
 
     window = Tk()  # открытие окна
     window.title("Конвертор KOMPAC в Exel v.21")  
@@ -180,7 +183,7 @@ def interface():
     chk6 = Checkbutton(window, text=name13, font = font1, command = mass_point, variable=chk_state6)  
     chk6.grid(column=2, row=14)
     
-    window.mainloop() #цикл окна
+    window.mainloop() #закрытие окна
 
-interface()
+
     
