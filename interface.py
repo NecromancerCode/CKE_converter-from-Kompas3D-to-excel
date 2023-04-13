@@ -65,7 +65,7 @@ def interface():
     btn3 = Button(window, text="Конвертация в спецификацию", command=clicked_final, font = font2)  
     btn3.grid(column=1, row=12)
 
-    window.mainloop() #закрытие окна
+    window.mainloop() #цикл окна
 
 interface()
     
