@@ -6,6 +6,8 @@ import tkinter as tk
 import tkinter.scrolledtext as st
 from table import save_file 
 
+#для теста
+
 def interface():
 
     def clicked_folder():      
@@ -65,4 +67,5 @@ def interface():
     btn3.grid(column=1, row=12)
 
     window.mainloop() #закрытие окна
+
     
