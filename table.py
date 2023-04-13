@@ -1,5 +1,6 @@
 from openpyxl import load_workbook
 import openpyxl
+import os
 
 def save_file(path, cols):     
     file = path
@@ -15,3 +16,4 @@ def save_file(path, cols):
             ws.cell(row=row_txt, column=col_txt).value = value_txt
 
     wb.save(file)
+    os.startfile(file)
