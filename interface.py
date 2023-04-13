@@ -22,6 +22,7 @@ def interface():
         f = open('tr.txt','w', encoding='utf-8')
 
         f.write(fnkomp + "\n" + fnxl + "\n" + str(mass).replace('[', '').replace(']', '')) # отсев ковычек из массива
+        window.destroy()
 
     def clicked_eng():
 
@@ -106,8 +107,6 @@ def interface():
         else: mass[4] = 0
         if chk_state6.get() == 1: mass[5] = 1
         else: mass[5] = 0
-        f.write(fnkomp + "\n" + fnxl) 
-        window.destroy()
 
     window = Tk()  # открытие окна
     window.title("Конвертор KOMPAC в Exel v.21")  
