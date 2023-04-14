@@ -44,16 +44,18 @@ def parse_detail_info(doc_path, settings):
 def parts_info(Part7, PartCollection, module7, settings):
     parts_array = []
     info = []
+    number = 0
     for num in range(len(PartCollection)):  
         workPart = PartCollection.Part(num)    # Цикл перебора деталей
         if workPart.Name not in parts_array:    # Если деталь до этого не встречалась, берем в работу
-            parts_array.append(workPart.Name)   
-            info.append(detail_info(Part7, workPart, module7, settings))   # Вызовем функцию получения информации о детали
+            parts_array.append(workPart.Name)  
+            row, number = detail_info(Part7, workPart, module7, settings, number)
+            info.append(row)   # Вызовем функцию получения информации о детали
     entry = Part7.Marking
     return(info, entry)  # Вернем массив с массивами информации о каждой детали
 
 # Функция получения информации о деталях
-def detail_info(Part7, Part, module7, settings):
+def detail_info(Part7, Part, module7, settings, number):
     # Подключим интерфейс для листовых тел, если они есть
     try:
         MetalContainer = Part._oleobj_.QueryInterface(module7.ISheetMetalContainer.CLSID, pythoncom.IID_IDispatch)
@@ -63,16 +65,17 @@ def detail_info(Part7, Part, module7, settings):
     except:
         Body = None
     # Опишем предварительно переменные, используемые в массиве с данными
-    number, dse, marking, value, measure, entry, material = 0, '', '', 0, '', '', ''
+    dse, marking, value, measure, entry, material = '', '', 0, '', '', ''
+    number += 1
     # Определим вид ДСЕ - деталь, сборка, стандартный элемент, а также материал и толщину для листовых тел
     if (Part.Detail == 0):
-        dse = 'Сб.ед.'
+        dse = 'Cборочные единицы'
         material = ''
     elif (Part.Standard == 1):
-        dse = 'Ст.изд.'
+        dse = 'Cтандартные изделия'
         material = Part.Material
     else:
-        dse = 'Дет.'
+        dse = 'Детали'
         if Body != None:
             material = Part.Material + ', ' + str(Body.Thickness) + ' мм'
     # Определим обозначение, количество, единицу измерения, вхождение в сборку
@@ -90,4 +93,4 @@ def detail_info(Part7, Part, module7, settings):
         row_text.append(measure)
     if settings[4]: row_text.append(entry)
     if settings[5]: row_text.append(material)
-    return row_text  # Вернем массив информации о конкретной детали
+    return row_text, number  # Вернем массив информации о конкретной детали
