@@ -81,11 +81,13 @@ def detail_info(Part7, Part, module7, settings):
     measure = 'шт.'
     entry = Part7.Marking
     # Запишем полученные данные в массив
-    row_text=[]
-    if settings[0]: row_text.append(dse)
-    if settings[1]: row_text.append(marking)
-    if settings[2]: row_text.append(value)
-    if settings[3]: row_text.append(measure)
+    row_text = []
+    if settings[0]: row_text.append(number)
+    if settings[1]: row_text.append(dse)
+    if settings[2]: row_text.append(marking)
+    if settings[3]: 
+        row_text.append(value)
+        row_text.append(measure)
     if settings[4]: row_text.append(entry)
     if settings[5]: row_text.append(material)
     return row_text  # Вернем массив информации о конкретной детали
