@@ -78,8 +78,13 @@ def detail_info(Part7, Part, module7, settings, number):
         dse = 'Детали'
         if Body != None:
             material = Part.Material + ', ' + str(Body.Thickness) + ' мм'
+        else:
+            material = Part.Material
     # Определим обозначение, количество, единицу измерения, вхождение в сборку
-    marking = Part.Marking
+    if Part.Marking != '':
+        marking = Part.Marking + ' ' + Part.Name
+    else:
+        marking = Part.Name
     value = Part7.InstanceCount(Part)
     measure = 'шт.'
     entry = Part7.Marking
