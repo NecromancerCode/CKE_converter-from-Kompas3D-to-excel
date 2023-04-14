@@ -28,7 +28,7 @@ def interface():
 
         global eng_txt
 
-        window.geometry('670x400')
+        window.geometry('720x400')
         i = "KOMPAC to Exel convertor v.21"
         window.title(i)
 
@@ -48,7 +48,7 @@ def interface():
 
         global ru_txt
 
-        window.geometry('590x400')
+        window.geometry('800x400')
         i = "Конвертор KOMPAC в Exel v.21"
         window.title(i)
 
@@ -82,7 +82,7 @@ def interface():
 
     window = Tk()  # открытие окна
     window.title("Конвертор KOMPAC в Exel v.21")  
-    window.geometry('590x400')
+    window.geometry('800x400')
 
     menu = Menu(window) # шапка окна
     new_item = Menu(menu, tearoff=0)  
@@ -155,4 +155,3 @@ def interface():
     chk6.grid(column=2, row=14)
     
     window.mainloop() #закрытие окна
-    

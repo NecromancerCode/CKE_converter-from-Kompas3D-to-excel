@@ -5,12 +5,12 @@ eng_txt = ["language",
            "The path to the specification .xl :", 
            "Specify the path to the table with the specification", 
            "Conversion to Specification", 
-           "Type of DSE", 
-           "Name", 
+           "Auto positions", 
+           "Detail type", 
+           "Marking", 
            "Quantity", 
-           "Thickness", 
-           "Material", 
-           "Where it includes"]
+           "Where it includes",
+           "Material and thickness"]
 
 
 ru_txt = ["Язык",
@@ -20,9 +20,9 @@ ru_txt = ["Язык",
           "Путь к спецификаци .xl :",
           "Указать путь к таблице со спецификацией",
           "Конвертация в спецификацию",
+          "Авторасстановка позиций",
           "Вид ДСЕ",
           "Наименование",
-          "Количество",
-          "Толщина",
-          "Материал (вид)",
-          "Куда входит"]
+          "Количество и ед.",
+          "Куда входит",
+          "Материал и толщина"]
