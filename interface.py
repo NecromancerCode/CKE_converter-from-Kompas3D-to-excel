@@ -19,7 +19,7 @@ def interface():
     def clicked_final():  
         fnkomp = txt1.get()
         fnxl = txt2.get()
-        f = open('tr.txt','w', encoding='utf-8')
+        f = open('settings.txt','w', encoding='utf-8')
 
         f.write(fnkomp + "\n" + fnxl + "\n" + str(mass).replace('[', '').replace(']', '')) # отсев ковычек из массива
         window.destroy()
