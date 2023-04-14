@@ -35,10 +35,10 @@ def parse_detail_info(doc_path, settings):
     iPart7 = doc3D.TopPart
     iPartCollection7 = iPart7.Parts  # Получим указатель на список всех элементов, входящих в сборку
    
-    info = parts_info(iPart7, iPartCollection7, module7, settings)    # Запустим парсинг информации о каждой детали
+    info, entry = parts_info(iPart7, iPartCollection7, module7, settings)    # Запустим парсинг информации о каждой детали
 
     if not is_run: app7.Quit()  # Закрываем программу при необходимости
-    return info  # Вернем массив информации о каждой детали для записи
+    return info, entry  # Вернем массив информации о каждой детали для записи
 
 # Функция перебора каждого элемента сборки
 def parts_info(Part7, PartCollection, module7, settings):
@@ -49,7 +49,8 @@ def parts_info(Part7, PartCollection, module7, settings):
         if workPart.Name not in parts_array:    # Если деталь до этого не встречалась, берем в работу
             parts_array.append(workPart.Name)   
             info.append(detail_info(Part7, workPart, module7, settings))   # Вызовем функцию получения информации о детали
-    return(info)  # Вернем массив с массивами информации о каждой детали
+    entry = Part7.Marking
+    return(info, entry)  # Вернем массив с массивами информации о каждой детали
 
 # Функция получения информации о деталях
 def detail_info(Part7, Part, module7, settings):
