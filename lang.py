@@ -5,11 +5,11 @@ eng_txt = ["language",
            "The path to the specification .xl :", 
            "Specify the path to the table with the specification", 
            "Conversion to Specification", 
-           "Auto positions", 
+           "Auto positioning", 
            "Detail type", 
-           "Marking", 
-           "Quantity", 
-           "Where it includes",
+           "Name", 
+           "Quantity and pcs.", 
+           "Is included to",
            "Material and thickness"]
 
 
