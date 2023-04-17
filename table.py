@@ -3,7 +3,7 @@ import openpyxl
 import os
 
 # Функция открытия и записи в таблицу значений, где path - путь до таблицы, cols - массив с массивами строк значений
-def save_file(path, settings, info, entry):     
+def save_file(path, settings, info):     
     file = path
     wb = load_workbook(file)
     ws = wb.active  # Получим активный лист таблицы
@@ -18,8 +18,9 @@ def save_file(path, settings, info, entry):
         columns.append(6)
     if settings[4]: columns.append(8)
     if settings[5]: columns.append(9)
+    if settings[6]: columns.append(10)
+    if settings[7]: columns.append(11)
     # Запишем перебором массива значения в каждую из строк таблицы
-    ws.cell(row = 5, column = 1).value = entry
     for row_txt in range(row, row + len(info)): 
         txt=info[row_txt-row]
         a=0
