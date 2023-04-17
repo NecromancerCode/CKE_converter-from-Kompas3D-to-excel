@@ -1,5 +1,5 @@
 eng_txt = ["language", 
-           "reference", 
+           "FAQ", 
            "The path to the KOMPAS file :", 
            "Specify the KOMPAC assembly file", 
            "The path to the specification .xl :", 
@@ -10,19 +10,26 @@ eng_txt = ["language",
            "Name", 
            "Quantity and pcs.", 
            "Is included to",
-           "Material and thickness"]
+           "Material and thickness",
+           "Covering",
+           "Comment"]
 
 
-ru_txt = ["Язык",
-          "Справка",
+ru_txt = ["language",
+          "FAQ",
           "Путь к файлу KOMPAC :",
           "Указать сборочный файл KOMPAC",
           "Путь к спецификаци .xl :",
           "Указать путь к таблице со спецификацией",
           "Конвертация в спецификацию",
-          "Авторасстановка позиций",
-          "Вид ДСЕ",
-          "Наименование",
-          "Количество и ед.",
-          "Куда входит",
-          "Материал и толщина"]
+          "Авто. позиция          ",
+          "Вид ДСЕ                   ",
+          "Наименование          ",
+          "Количество и ед.      ",
+          "Куда входит              ",
+          "Материал и толщина ",
+          "Гальваника/покраска",
+          "Примечание               "]
+
+FAQ_txt_ru = ["Программа открывает сборки формата KOPMAC и переводит выбранные пользователем параметры спецификации в таблицу формата .xls \n \n Для работы наобходим KOMPAC \n \n Программа не поддерживает устарешие таблицы формата .xl \n \n Для выбора параметров спецфикации можно щелкать на текст, а не только на окно для галочки \n \n Почта для вопросов - dinner.real@gmail.com"]
+FAQ_txt_eng = ["The program opens KOPMAC format assemblies and translates the specification parameters selected by the user into a format table .xls\n\n To work, we need KOMPAC \n \n The program does not support the installation of a format table.xl \n \n To select the specialification parameters, you can click on the text, and not just on the window for the check mark \n\n Mail for questions - dinner.real@gmail.com"]
