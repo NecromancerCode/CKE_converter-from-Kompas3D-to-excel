@@ -180,5 +180,3 @@ def interface():
     chk8.grid(column=1, row=20, ipadx=0, ipady=0, padx=0, pady=0)
     
     window.mainloop() #закрытие окна
-
-interface()
