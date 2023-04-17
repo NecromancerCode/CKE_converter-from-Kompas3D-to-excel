@@ -3,7 +3,7 @@ from tkinter import Label, Button, Entry, Tk, font, filedialog, Menu, Checkbutto
 import tkinter as tk
 from lang import eng_txt, ru_txt, FAQ_txt_ru, FAQ_txt_eng
 
-mass = [0, 0, 0, 0, 0, 0]
+mass = [0, 0, 0, 0, 0, 0, 0, 0]
 
 def interface():
    
@@ -89,10 +89,10 @@ def interface():
         else: mass[4] = 0
         if chk_state6.get() == 1: mass[5] = 1
         else: mass[5] = 0
-        if chk_state7.get() == 1: mass[4] = 1
-        else: mass[4] = 0
-        if chk_state8.get() == 1: mass[5] = 1
-        else: mass[5] = 0
+        if chk_state7.get() == 1: mass[6] = 1
+        else: mass[6] = 0
+        if chk_state8.get() == 1: mass[7] = 1
+        else: mass[7] = 0
 
     window = Tk()  # открытие окна
     window.title("Конвертор KOMPAC в Exel v.21")  
