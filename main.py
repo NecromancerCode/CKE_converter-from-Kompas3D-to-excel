@@ -1,7 +1,7 @@
 import kompas, table
 from interface import interface
 
-#interface()
+interface()
 
 file_path = open("settings.txt", encoding='utf-8')
 paths = file_path.readlines()
