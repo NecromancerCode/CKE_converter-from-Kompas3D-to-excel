@@ -83,7 +83,7 @@ def detail_info(Part7, Part, module7, settings, app7):
             marking += ' ' + iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Наименование"), "", True, True)[1]
         value = iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Количество"), "", True, True)[1]
         material = iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Материал"), "", True, True)[1]
-        cover = iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Вид изделия"), "", True, True)[1]
+        cover = iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Зона"), "", True, True)[1]
         comment = iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Примечание"), "", True, True)[1]
 
     # Определим вид ДСЕ - деталь, сборка, стандартный элемент, а также материал и толщину для листовых тел
