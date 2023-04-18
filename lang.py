@@ -20,7 +20,7 @@ ru_txt = ["language",
           "Путь к файлу KOMPAC :",
           "Указать сборочный файл KOMPAC",
           "Путь к спецификаци .xl :",
-          "Указать путь к таблице со спецификацией",
+          "Указать путь к таблице Exсel",
           "Конвертация в спецификацию",
           "Авто. позиция          ",
           "Вид ДСЕ                   ",
@@ -31,5 +31,5 @@ ru_txt = ["language",
           "Гальваника/покраска",
           "Примечание               "]
 
-FAQ_txt_ru = ["Программа открывает сборки формата KOPMAC и переводит выбранные пользователем параметры спецификации в таблицу формата .xls \n \n Для работы наобходим KOMPAC \n \n Программа не поддерживает устарешие таблицы формата .xl \n \n Для выбора параметров спецфикации можно щелкать на текст, а не только на окно для галочки \n \n Почта для вопросов - dinner.real@gmail.com"]
+FAQ_txt_ru = ["Программа открывает сборки формата KOPMAC и переводит выбранные пользователем параметры спецификации в таблицу формата .xls \n \n - для работы наобходим KOMPAC \n \n - программа не поддерживает устарешие таблицы формата .xl \n \n - для выбора параметров спецфикации можно щелкать на текст, а не только на окно для галочки \n \n - почта для вопросов - dinner.real@gmail.com"]
 FAQ_txt_eng = ["The program opens KOPMAC format assemblies and translates the specification parameters selected by the user into a format table .xls\n\n To work, we need KOMPAC \n \n The program does not support the installation of a format table.xl \n \n To select the specialification parameters, you can click on the text, and not just on the window for the check mark \n\n Mail for questions - dinner.real@gmail.com"]

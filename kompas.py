@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import pythoncom
 import subprocess
 from win32com.client import Dispatch, gencache
@@ -98,4 +97,5 @@ def detail_info(Part7, Part, module7, settings, number):
         row_text.append(measure)
     if settings[4]: row_text.append(entry)
     if settings[5]: row_text.append(material)
+    
     return row_text, number  # Вернем массив информации о конкретной детали

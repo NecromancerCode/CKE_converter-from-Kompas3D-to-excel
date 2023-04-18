@@ -35,7 +35,7 @@ def interface():
         global eng_txt
 
         window.geometry('400x565')
-        i = "KOMPAC to Exel convertor v.21"
+        i = "KOMPAC to Exсel convertor v.21"
         window.title(i)
 
         lbl2.configure(text = eng_txt[2])  
@@ -57,7 +57,7 @@ def interface():
         global ru_txt
 
         window.geometry('380x565')
-        i = "Конвертор KOMPAC в Exel v.21"
+        i = "Конвертор KOMPAC в Exсel v.21"
         window.title(i)
 
         lbl2.configure(text = ru_txt[2])  
@@ -95,7 +95,7 @@ def interface():
         else: mass[7] = 0
 
     window = Tk()  # открытие окна
-    window.title("Конвертор KOMPAC в Exel v.21")  
+    window.title("Конвертор KOMPAC в Exсel v.21")  
     window.geometry('380x565')
 
     menu = Menu(window) # шапка окна 
@@ -180,3 +180,4 @@ def interface():
     chk8.grid(column=1, row=20, ipadx=0, ipady=0, padx=0, pady=0)
     
     window.mainloop() #закрытие окна
+interface()
