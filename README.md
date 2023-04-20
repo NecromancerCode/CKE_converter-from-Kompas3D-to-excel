@@ -4,7 +4,7 @@
  
 This utility will allow you to get the specification from the KOMPAS-3D assembly file and translate it into the excel table. You can also select the necessary parameters for the specification and exclude unnecessary from it.
  
-The ```KOMPASS version 18 and older``` is required for the application to work, and the application also does not work with tables of outdated format (.xlsx).
+The ```KOMPASS version 18 and older``` is required for the application to work, and the application also does not work with tables of outdated format (```.xlsx```).
  
 ## How to use it?
  
