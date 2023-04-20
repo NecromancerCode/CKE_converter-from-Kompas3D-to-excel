@@ -13,7 +13,9 @@ The ```KOMPASS version 18 and older``` is required for the application to work, 
 * Specify the path in the excel table where you want to move the specification
 * Click on the ```"Conversion"``` button, after that the excel file that you specified will automatically open and be filled with the data that was selected
 
-Below are the parameters that you can choose to translate your assembly into a specification
+<hr>
+
+Below are the parameters that you can choose to translate your assembly into a specification:
 
 * language 
 * FAQ 
