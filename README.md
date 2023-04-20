@@ -2,7 +2,7 @@
  
  Hi!
  
- This utility will allow you to get the specification from the COMPAS-3D assembly file and translate it into the excel table. You can also select the necessary parameters for the specification and exclude unnecessary from it.
+ This utility will allow you to get the specification from the KOMPAS-3D assembly file and translate it into the excel table. You can also select the necessary parameters for the specification and exclude unnecessary from it.
 
 * language 
 * FAQ 
