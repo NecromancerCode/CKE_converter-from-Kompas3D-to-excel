@@ -8,10 +8,12 @@ The ```KOMPAS version 18 and older``` is required for the application to work, a
  
 ## How to use it?
  
-* Download the application in the release (.exe file)
+* Download the application in the release (```https://github.com/LuLikBP/CKE_converter-from-Kompas3D-to-excel/releases```)
 * Specify the path to the KOMPAS-3d assembly file
 * Specify the path in the excel table where you want to move the specification
 * Click on the ```"Conversion"``` button, after that the excel file that you specified will automatically open and be filled with the data that was selected
+
+![output(video-cutter-js com)](https://user-images.githubusercontent.com/40739802/233345840-d1112e3a-2647-476e-b57a-764b4d195db3.gif)
 
 <hr>
 
@@ -26,6 +28,8 @@ The ```KOMPAS version 18 and older``` is required for the application to work, a
 * Covering
 * Comment
 
+![image](https://user-images.githubusercontent.com/40739802/233324864-e086c90a-b41e-4960-ab37-d0d873599af7.png)
+
 <hr>
 
 ### CKE_converter-from-Kompas3D-to-excel_RU
@@ -38,7 +42,7 @@ The ```KOMPAS version 18 and older``` is required for the application to work, a
  
 ## Как им пользоваться?
  
-* Загрузите приложение в release (.exe файл)
+* Загрузите приложение в release (```https://github.com/LuLikBP/CKE_converter-from-Kompas3D-to-excel/releases```)
 * Укажите путь к файлу сборки КОМПАС-3d
 * Укажите путь в таблице Excel, куда вы хотите переместить спецификацию
 * Нажмите на кнопку `Конвертация", после этого указанный вами файл Excel автоматически откроется и будет заполнен выбранными данным
