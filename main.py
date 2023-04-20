@@ -9,6 +9,7 @@ paths = file_path.readlines()
 kompas_path = paths[0].replace('\n', '')
 xl_path = paths[1].replace('\n', '')
 variables = paths[2].replace('\n', '')
+entry = paths[3].replace('\n', '')
 settings = [int(numeric_string) for numeric_string in variables.split(", ")]
 file_path.close()
 remove("settings.txt",)
@@ -16,4 +17,4 @@ remove("settings.txt",)
 info = kompas.parse_info(kompas_path, settings)
 for i in range(len(info)):
     info[i].sort(key = lambda x: x[0])
-table.save_file(xl_path, settings, info)
+table.save_file(xl_path, settings, info, entry)
