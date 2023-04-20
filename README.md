@@ -13,7 +13,8 @@ The ```KOMPAS version 18 and older``` is required for the application to work, a
 * Specify the path in the excel table where you want to move the specification
 * Click on the ```"Conversion"``` button, after that the excel file that you specified will automatically open and be filled with the data that was selected
 
-![output(video-cutter-js com)](https://user-images.githubusercontent.com/40739802/233345840-d1112e3a-2647-476e-b57a-764b4d195db3.gif)
+![output(video-cutter-js com) (2)](https://user-images.githubusercontent.com/40739802/233356814-1729f7bd-af92-435f-a1e5-c693bd851510.gif)
+
 
 <hr>
 
