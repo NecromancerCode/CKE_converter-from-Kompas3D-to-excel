@@ -44,6 +44,7 @@ def interface():
             chk_state6.set(1)
             chk_state7.set(1)
             chk_state8.set(1)
+
         else:
 
             chk_state1.set(0)
@@ -76,6 +77,8 @@ def interface():
         chk6.configure(text = eng_txt[12])
         chk7.configure(text = eng_txt[13])
         chk8.configure(text = eng_txt[14])
+        chk9.configure(text = eng_txt[15])
+        lbl10.configure(text = eng_txt[16])
         
     def clicked_ru(): # функция смены языка на русский
 
@@ -98,8 +101,11 @@ def interface():
         chk6.configure(text = ru_txt[12])
         chk7.configure(text = ru_txt[13])
         chk8.configure(text = ru_txt[14])
+        chk9.configure(text = ru_txt[15])
+        lbl10.configure(text = ru_txt[16])
 
     def mass_point():
+
         global mass # массив для записи выбранных параметров
 
         if chk_state1.get() == 0: mass[0] = 0
@@ -130,10 +136,7 @@ def interface():
     new_item.add_command(label='ENG', command=clicked_eng)
     menu.add_cascade(label=ru_txt[0], menu=new_item)
     menu.add_cascade(label=ru_txt[1], command=FAQ)  
-    window.config(menu=menu) # конец шапки окна 
-
-    #lbl1 = Label(window, text="")  
-    #lbl1.grid(column=1, row=0, ipadx=0, ipady=0, padx=0, pady=0)   
+    window.config(menu=menu) # конец шапки окна  
 
     font1 = font.Font(family= "Verdana", size=11, weight="normal", slant="roman") # настройка шрифта (обычный)
     font2 = font.Font(family= "Verdana", size=14, weight="bold", slant="roman") # настройка шрифта (жирный)
@@ -158,12 +161,6 @@ def interface():
     txt2.grid(column=1, row=6)  
     btn2 = Button(window, text=ru_txt[5], command=clicked_xl, font = font1)  
     btn2.grid(column=1, row=8) 
-
-    #lbl5 = Label(window, text="_"*60)  
-    #lbl5.grid(column=1, row=22)
-
-    #lbl11 = Label(window, text="")  
-    #lbl11.grid(column=1, row=23)  
 
     lbl6 = Label(window, text="_"*60)  
     lbl6.grid(column=1, row=10) 
@@ -210,13 +207,13 @@ def interface():
     chk8.grid(column=1, row=20, ipadx=0, ipady=0, padx=0, pady=0)
 
     chk_state9 = IntVar()  
-    chk9 = Checkbutton(window, text="Выбрать/отменить всё", font = font1, command = ch_all, variable=chk_state9)  
+    chk9 = Checkbutton(window, text=ru_txt[15], font = font1, command = ch_all, variable=chk_state9)  
     chk9.grid(column=1, row=13, ipadx=0, ipady=0, padx=0, pady=0)
 
     txt3 = Entry(window,width=22, font=font3) 
     txt3.grid(column=1, row=24)
 
-    lbl10 = Label(window, text="Вписать первичное применение \n или оставить пустым", font = font4)  
+    lbl10 = Label(window, text=ru_txt[16], font = font4)  
     lbl10.grid(column=1, row=25)
 
     chk_state1.set(1)
