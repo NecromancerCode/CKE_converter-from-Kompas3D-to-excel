@@ -10,7 +10,7 @@ xl_path = paths[1].replace('\n', '')
 variables = paths[2].replace('\n', '')
 settings = [int(numeric_string) for numeric_string in variables.split(", ")]
 
-info = kompas.parse_detail_info(kompas_path, settings)
-print(info)
-info.sort(key = lambda x: x[0])
+info = kompas.parse_info(kompas_path, settings)
+for i in range(len(info)):
+    info[i].sort(key = lambda x: x[0])
 table.save_file(xl_path, settings, info)
