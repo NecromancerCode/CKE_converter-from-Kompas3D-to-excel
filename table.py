@@ -6,6 +6,7 @@ import os
 def save_file(path, settings, info, entry):     
     if path == '':
         wb = Workbook()
+        path = 'new_specification.xlsx'
     else:
         wb = load_workbook(path)
     
