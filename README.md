@@ -15,7 +15,7 @@ The ```KOMPASS version 18 and older``` is required for the application to work, 
 
 <hr>
 
-Below are the parameters that you can choose to translate your assembly into a specification:
+**Below are the parameters that you can choose to translate your assembly into a specification:**
 
 * language 
 * FAQ 
