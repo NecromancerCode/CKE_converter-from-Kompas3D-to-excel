@@ -18,7 +18,7 @@ def is_running():
     return True if proc_list else False
 
 # Функция получения активного документа - ссылки на сборку
-def parse_detail_info(doc_path, settings):
+def parse_info(doc_path, settings):
     is_run = is_running()  # Проверка запуска компаса. True, если программа Компас уже запущена
 
     module7, api7, const7 = get_kompas_api7()  # Подключаемся к программе
@@ -31,35 +31,48 @@ def parse_detail_info(doc_path, settings):
                                    Visible=True,
                                    ReadOnly=True)  # Откроем файл в видимом режиме без права его изменять
     doc3D = module7.IKompasDocument3D(doc7)
-    iPart7 = doc3D.TopPart
-    iPartCollection7 = iPart7.Parts  # Получим указатель на список всех элементов, входящих в сборку
-   
-    info = parts_info(iPart7, iPartCollection7, module7, settings, app7)    # Запустим парсинг информации о каждой детали
-
+    iEmbodimentsManager = module7.IEmbodimentsManager(doc3D)  # Вызовем менеджер исполнений
+    
+    info = parse_embodiments(app7, module7, iEmbodimentsManager, doc3D, settings)  # Запустим парсинг информации о деталях для каждого исполнения
     if not is_run: app7.Quit()  # Закрываем программу при необходимости
+    
     return info  # Вернем массив информации о каждой детали для записи
 
-# Функция перебора каждого элемента сборки
-def parts_info(Part7, PartCollection, module7, settings, app7):
+# Функция перебора всех исполнений для получения коллекции деталей
+def parse_embodiments(app7, module7, iEmbodimentsManager, doc3D, settings):
+    info = []
+
+    for i in range (iEmbodimentsManager.EmbodimentCount):
+        iEmbodimentsManager.SetCurrentEmbodiment(i)
+        iPart7 = doc3D.TopPart
+        iPartCollection7 = iPart7.Parts  # Получим указатель на список всех элементов, входящих в сборку
+        info.append(parse_assemble(app7, module7, iPart7, iPartCollection7, settings))     # Вызовем для каждого исполнения парсинг информации о деталях
+    
+    return info  # Вернем массив с массивами массивов с информацией о каждой детали в исполнении
+
+# Функция перебора всех деталей в коллекции деталей
+def parse_assemble(app7, module7, iPart7, iPartCollection7, settings):
     parts_array = []
     info = []
-    for num in range(len(PartCollection)):  
-        workPart = PartCollection.Part(num)    # Цикл перебора деталей
+
+    for num in range(len(iPartCollection7)):  
+        workPart = iPartCollection7.Part(num)    # Цикл перебора деталей
         if workPart.Name not in parts_array:    # Если деталь до этого не встречалась, берем в работу
             parts_array.append(workPart.Name)  
-            row = detail_info(Part7, workPart, module7, settings,  app7)
-            info.append(row)   # Вызовем функцию получения информации о детали
-    return(info)  # Вернем массив с массивами информации о каждой детали
-
-# Функция получения информации о деталях
-def detail_info(Part7, Part, module7, settings, app7):
+            info.append(parse_detail(app7, module7, iPart7, workPart, settings))   # Вызовем функцию получения информации о детали
     
+    return info  # Вернем массив с массивами информации о каждой детали
+
+# Функция получения информации о каждой конкретной детали
+def parse_detail(app7, module7, iPart7, workPart, settings):
+    # Подключение к менеджеру свойств деталей
     try:
         iPropertyMng = module7.IPropertyMng(app7)
-        iPropertyKeeper = module7.IPropertyKeeper(Part)
+        iPropertyKeeper = module7.IPropertyKeeper(workPart)
     except:
         iPropertyMng = None
         iPropertyKeeper = None
+    # Подключение к менеджеру листовых деталей
     try:
         MetalContainer = module7.ISheetMetalContainer(MetalContainer)
         Bodies = MetalContainer.SheetMetalBodies
@@ -69,7 +82,7 @@ def detail_info(Part7, Part, module7, settings, app7):
 
     # Опишем предварительно переменные, используемые в массиве с данными
     pos, dse, marking, value, measure, entry, material, cover, comment = 0, '', '', 0, '', '', '', '', ''
-
+    # Если получен менеджер свойств, то распарсим информацию о деталях. Наименование параметров берется из стандартных свойств компаса
     if iPropertyMng != None:
         pos = iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Позиция"), "", True, True)[1]
         if pos == '':
@@ -86,14 +99,20 @@ def detail_info(Part7, Part, module7, settings, app7):
         cover = iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Зона"), "", True, True)[1]
         comment = iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Примечание"), "", True, True)[1]
 
-    # Определим вид ДСЕ - деталь, сборка, стандартный элемент, а также материал и толщину для листовых тел
+    # Если деталь листовая, то добавим толщину к обозначению материала
     if (dse == 'Детали'):
         if Body != None:
             material += ', ' + str(Body.Thickness) + ' мм'
-    if value != Part7.InstanceCount(Part):
-        value = Part7.InstanceCount(Part)
-    measure = 'шт.'
-    entry = Part7.Marking
+    # Если количество деталей в свойствах не сходится с количеством в сборке, примем кол-во в сборке за правильное
+    if int(value) < iPart7.InstanceCount(workPart):
+        value = iPart7.InstanceCount(workPart)
+    
+    if len(comment) <= 3 and ('мм' in comment or 'см' in comment or 'м' in comment):
+        measure = 'comment'
+    else:
+        measure = 'шт.'
+    entry = iPart7.Marking
+
     # Запишем полученные данные в массив
     row_text = []
     if settings[0]: row_text.append(pos)
