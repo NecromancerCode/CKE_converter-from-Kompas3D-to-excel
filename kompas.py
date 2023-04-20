@@ -115,8 +115,8 @@ def parse_detail(app7, module7, iPart7, workPart, settings):
 
     # Запишем полученные данные в массив
     row_text = []
-    row_text.append(pos)
-    if settings[1]: row_text.append(int(dse))
+    row_text.append(int(pos))
+    if settings[1]: row_text.append(dse)
     if settings[2]: row_text.append(marking)
     if settings[3]: 
         row_text.append(int(value))
