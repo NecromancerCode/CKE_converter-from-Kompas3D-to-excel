@@ -3,7 +3,7 @@ from tkinter import Label, Button, Entry, Tk, font, filedialog, Menu, Checkbutto
 import tkinter as tk
 from lang import eng_txt, ru_txt, FAQ_txt_ru, FAQ_txt_eng
 
-mass = [0, 0, 0, 0, 0, 0, 0, 0]
+mass = [1, 1, 1, 1, 1, 1, 1, 1]
 
 def interface():
    
@@ -55,7 +55,7 @@ def interface():
             chk_state7.set(0)
             chk_state8.set(0)
 
-    def clicked_eng():
+    def clicked_eng(): # функция смены языка на английский
 
         global eng_txt
 
@@ -77,7 +77,7 @@ def interface():
         chk7.configure(text = eng_txt[13])
         chk8.configure(text = eng_txt[14])
         
-    def clicked_ru():
+    def clicked_ru(): # функция смены языка на русский
 
         global ru_txt
 
@@ -102,22 +102,22 @@ def interface():
     def mass_point():
         global mass # массив для записи выбранных параметров
 
-        if chk_state1.get() == 1: mass[0] = 1
-        else: mass[0] = 0
-        if chk_state2.get() == 1: mass[1] = 1
-        else: mass[1] = 0
-        if chk_state3.get() == 1: mass[2] = 1
-        else: mass[2] = 0
-        if chk_state4.get() == 1: mass[3] = 1
-        else: mass[3] = 0
-        if chk_state5.get() == 1: mass[4] = 1
-        else: mass[4] = 0
-        if chk_state6.get() == 1: mass[5] = 1
-        else: mass[5] = 0
-        if chk_state7.get() == 1: mass[6] = 1
-        else: mass[6] = 0
-        if chk_state8.get() == 1: mass[7] = 1
-        else: mass[7] = 0
+        if chk_state1.get() == 0: mass[0] = 0
+        else: mass[0] = 1
+        if chk_state2.get() == 0: mass[1] = 0
+        else: mass[1] = 1
+        if chk_state3.get() == 0: mass[2] = 0
+        else: mass[2] = 1
+        if chk_state4.get() == 0: mass[3] = 0
+        else: mass[3] = 1
+        if chk_state5.get() == 0: mass[4] = 0
+        else: mass[4] = 1
+        if chk_state6.get() == 0: mass[5] = 0
+        else: mass[5] = 1
+        if chk_state7.get() == 0: mass[6] = 0
+        else: mass[6] = 1
+        if chk_state8.get() == 0: mass[7] = 0
+        else: mass[7] = 1
 
     window = Tk()  # открытие окна
     window.title("Конвертор KOMPAC в Exсel v.21")  
@@ -137,8 +137,8 @@ def interface():
 
     font1 = font.Font(family= "Verdana", size=11, weight="normal", slant="roman") # настройка шрифта (обычный)
     font2 = font.Font(family= "Verdana", size=14, weight="bold", slant="roman") # настройка шрифта (жирный)
-    font3 = font.Font(family= "Verdana", size=14, weight="normal", slant="roman")
-    font4 = font.Font(family= "Verdana", size=11, weight="bold", slant="roman")
+    font3 = font.Font(family= "Verdana", size=14, weight="normal", slant="roman") # настройка для текста окна
+    font4 = font.Font(family= "Verdana", size=11, weight="bold", slant="roman") # настройка для текста под окном
 
     lbl2 = Label(window, text=ru_txt[2], font = font2)  
     lbl2.grid(column=1, row=1)
