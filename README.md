@@ -26,6 +26,8 @@ The ```KOMPASS version 18 and older``` is required for the application to work, 
 * Covering
 * Comment
 
+<hr>
+
 ## CKE_converter-from-Kompas3D-to-excel_RU
 
 **Привет!**
