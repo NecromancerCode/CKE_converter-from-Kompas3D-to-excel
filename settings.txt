@@ -1,4 +1,0 @@
-C:/Users/Dinner/Documents/12345.SLDPRT
-C:/Users/Dinner/Documents/Acople circular v1.step.SLDPRT
-0, 0, 0, 0, 0, 0, 0, 0
-vcvcvcvcv

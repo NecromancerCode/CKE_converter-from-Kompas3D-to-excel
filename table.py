@@ -6,10 +6,9 @@ import os
 def save_file(path, settings, info):     
     file = path
     wb = load_workbook(file)
-    ws = wb.active  # Получим активный лист таблицы
+    
     row = 7
     columns = []
-    2, 3, 4, 5, 6, 8, 9
     if settings[0]: columns.append(2)
     if settings[1]: columns.append(3)
     if settings[2]: columns.append(4)
@@ -20,14 +19,37 @@ def save_file(path, settings, info):
     if settings[5]: columns.append(9)
     if settings[6]: columns.append(10)
     if settings[7]: columns.append(11)
-    # Запишем перебором массива значения в каждую из строк таблицы
+    
+    titles = []
+
+    workSheet = wb.active  # Получим активный лист таблицы
+    try:
+        workSheet.title = info[0][0][5]
+    except:
+        workSheet.title = 'Лист №1'
+    titles.append(workSheet.title)
+
+    for i in range(1, len(info)):
+        copySheet = wb.copy_worksheet(workSheet)
+        try:
+            copySheet.title = info[i][0][5]
+        except:
+            copySheet.title = 'Лист №' + str(i+1)
+        titles.append(copySheet.title)    
+    
+    for i in range(len(info)):
+        wb.active = wb[titles[i]]
+        workSheet = wb.active
+        paste_info(workSheet, info[i], row, columns)
+    
+    wb.save(file)
+    os.startfile(file)
+
+def paste_info(workSheet, info, row, columns):
     for row_txt in range(row, row + len(info)): 
         txt=info[row_txt-row]
         a=0
         for col_txt in columns:
             value_txt = txt[a]
             a=a+1
-            ws.cell(row=row_txt, column=col_txt).value = value_txt
-    # Сохраним файл и откроем в excel 
-    wb.save(file)
-    os.startfile(file)
+            workSheet.cell(row=row_txt, column=col_txt).value = value_txt
