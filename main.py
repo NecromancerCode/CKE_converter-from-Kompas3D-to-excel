@@ -1,3 +1,9 @@
+# Copyright (c) Converter Kompas-Excel Olesya Droysh and Martynov Ruslan
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
 import kompas, table
 from interface import interface
 from os import remove

@@ -1,3 +1,9 @@
+# Copyright (c) Converter Kompas-Excel Olesya Droysh and Martynov Ruslan
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
 # -*- coding: utf-8 -*-
 import pythoncom
 import subprocess

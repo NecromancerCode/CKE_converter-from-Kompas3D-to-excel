@@ -1,3 +1,9 @@
+# Copyright (c) Converter Kompas-Excel Olesya Droysh and Martynov Ruslan
+# All rights reserved.
+
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
 # -*- coding: utf-8 -*-
 from tkinter import Label, Button, Entry, Tk, font, filedialog, Menu, Checkbutton, IntVar, messagebox
 import tkinter as tk
