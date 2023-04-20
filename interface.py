@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from tkinter import Label, Button, Entry, Tk, font, filedialog, Menu, Checkbutton, IntVar, messagebox 
+from tkinter import Label, Button, Entry, Tk, font, filedialog, Menu, Checkbutton, IntVar, messagebox
 import tkinter as tk
 from lang import eng_txt, ru_txt, FAQ_txt_ru, FAQ_txt_eng
 
@@ -18,9 +18,11 @@ def interface():
     def clicked_final():  
         fnkomp = txt1.get()
         fnxl = txt2.get()
+        comm = txt3.get()
+
         f = open('settings.txt','w', encoding='utf-8')
 
-        f.write(fnkomp + "\n" + fnxl + "\n" + str(mass).replace('[', '').replace(']', '')) # отсев ковычек из массива
+        f.write(fnkomp + "\n" + fnxl + "\n" + str(mass).replace('[', '').replace(']', '') + "\n" + comm) # отсев ковычек из массива
         window.destroy()
 
     def FAQ():
@@ -29,13 +31,36 @@ def interface():
             messagebox.showinfo('FAQ', FAQ_txt_ru[0])
         else:
             messagebox.showinfo('FAQ', FAQ_txt_eng[0])
+    
+    def ch_all():
+
+        if chk_state9.get() == 1: 
+
+            chk_state1.set(1)
+            chk_state2.set(1)
+            chk_state3.set(1)
+            chk_state4.set(1)
+            chk_state5.set(1)
+            chk_state6.set(1)
+            chk_state7.set(1)
+            chk_state8.set(1)
+        else:
+
+            chk_state1.set(0)
+            chk_state2.set(0)
+            chk_state3.set(0)
+            chk_state4.set(0)
+            chk_state5.set(0)
+            chk_state6.set(0)
+            chk_state7.set(0)
+            chk_state8.set(0)
 
     def clicked_eng():
 
         global eng_txt
 
-        window.geometry('400x565')
-        i = "KOMPAC to Exсel convertor v.21"
+        window.geometry('400x600')
+        i = "KOMPAS to Exсel convertor v.21"
         window.title(i)
 
         lbl2.configure(text = eng_txt[2])  
@@ -56,8 +81,8 @@ def interface():
 
         global ru_txt
 
-        window.geometry('380x565')
-        i = "Конвертор KOMPAC в Exсel v.21"
+        window.geometry('380x600')
+        i = "Конвертор KOMПAC в Exсel v.21"
         window.title(i)
 
         lbl2.configure(text = ru_txt[2])  
@@ -96,7 +121,7 @@ def interface():
 
     window = Tk()  # открытие окна
     window.title("Конвертор KOMPAC в Exсel v.21")  
-    window.geometry('380x565')
+    window.geometry('380x600')
 
     menu = Menu(window) # шапка окна 
     new_item = Menu(menu, tearoff=0)  
@@ -107,11 +132,13 @@ def interface():
     menu.add_cascade(label=ru_txt[1], command=FAQ)  
     window.config(menu=menu) # конец шапки окна 
 
-    lbl1 = Label(window, text="")  
-    lbl1.grid(column=1, row=0, ipadx=0, ipady=0, padx=0, pady=0)   
+    #lbl1 = Label(window, text="")  
+    #lbl1.grid(column=1, row=0, ipadx=0, ipady=0, padx=0, pady=0)   
 
     font1 = font.Font(family= "Verdana", size=11, weight="normal", slant="roman") # настройка шрифта (обычный)
     font2 = font.Font(family= "Verdana", size=14, weight="bold", slant="roman") # настройка шрифта (жирный)
+    font3 = font.Font(family= "Verdana", size=14, weight="normal", slant="roman")
+    font4 = font.Font(family= "Verdana", size=11, weight="bold", slant="roman")
 
     lbl2 = Label(window, text=ru_txt[2], font = font2)  
     lbl2.grid(column=1, row=1)
@@ -132,24 +159,27 @@ def interface():
     btn2 = Button(window, text=ru_txt[5], command=clicked_xl, font = font1)  
     btn2.grid(column=1, row=8) 
 
-    lbl5 = Label(window, text="")  
-    lbl5.grid(column=1, row=9)  
+    #lbl5 = Label(window, text="_"*60)  
+    #lbl5.grid(column=1, row=22)
+
+    #lbl11 = Label(window, text="")  
+    #lbl11.grid(column=1, row=23)  
 
     lbl6 = Label(window, text="_"*60)  
     lbl6.grid(column=1, row=10) 
 
     lbl8 = Label(window, text="_"*60)  
-    lbl8.grid(column=1, row=21)
+    lbl8.grid(column=1, row=26)
 
     lbl9 = Label(window, text=" ")  
-    lbl9.grid(column=0, row=22)
+    lbl9.grid(column=0, row=30)
     
     btn3 = Button(window, text=ru_txt[6], command=clicked_final, font = font2)  
-    btn3.grid(column=1, row=23,  ipadx=0, ipady=0, padx=0, pady=0)
+    btn3.grid(column=1, row=27,  ipadx=0, ipady=0, padx=0, pady=0)
 
     chk_state1 = IntVar()  
     chk1 = Checkbutton(window, text=ru_txt[7], font = font1, command = mass_point, variable=chk_state1)  
-    chk1.grid(column=1, row=13, ipadx=0, ipady=0, padx=0, pady=0)
+    chk1.grid(column=1, row=21, ipadx=0, ipady=0, padx=0, pady=0)
 
     chk_state2 = IntVar()  
     chk2 = Checkbutton(window, text=ru_txt[8], font = font1, command = mass_point, variable=chk_state2)  
@@ -178,5 +208,26 @@ def interface():
     chk_state8 = IntVar()  
     chk8 = Checkbutton(window, text=ru_txt[14], font = font1, command = mass_point, variable=chk_state8)  
     chk8.grid(column=1, row=20, ipadx=0, ipady=0, padx=0, pady=0)
+
+    chk_state9 = IntVar()  
+    chk9 = Checkbutton(window, text="Выбрать/отменить всё", font = font1, command = ch_all, variable=chk_state9)  
+    chk9.grid(column=1, row=13, ipadx=0, ipady=0, padx=0, pady=0)
+
+    txt3 = Entry(window,width=22, font=font3) 
+    txt3.grid(column=1, row=24)
+
+    lbl10 = Label(window, text="Вписать первичное применение \n или оставить пустым", font = font4)  
+    lbl10.grid(column=1, row=25)
+
+    chk_state1.set(1)
+    chk_state2.set(1)
+    chk_state3.set(1)
+    chk_state4.set(1)
+    chk_state5.set(1)
+    chk_state6.set(1)
+    chk_state7.set(1)
+    chk_state8.set(1)
     
     window.mainloop() #закрытие окна
+
+interface()
