@@ -13,6 +13,8 @@ The ```KOMPAS version 18 and older``` is required for the application to work, a
 * Specify the path in the excel table where you want to move the specification
 * Click on the ```"Conversion"``` button, after that the excel file that you specified will automatically open and be filled with the data that was selected
 
+![output(video-cutter-js com)](https://user-images.githubusercontent.com/40739802/233345840-d1112e3a-2647-476e-b57a-764b4d195db3.gif)
+
 <hr>
 
 **Below are the parameters that you can choose to translate your assembly into a specification:**
@@ -25,6 +27,8 @@ The ```KOMPAS version 18 and older``` is required for the application to work, a
 * Material and thickness
 * Covering
 * Comment
+
+![image](https://user-images.githubusercontent.com/40739802/233324864-e086c90a-b41e-4960-ab37-d0d873599af7.png)
 
 <hr>
 
