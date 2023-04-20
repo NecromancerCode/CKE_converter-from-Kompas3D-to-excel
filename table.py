@@ -1,11 +1,14 @@
-from openpyxl import load_workbook
+from openpyxl import load_workbook, Workbook
 import openpyxl
 import os
 
 # Функция открытия и записи в таблицу значений, где path - путь до таблицы, cols - массив с массивами строк значений
 def save_file(path, settings, info, entry):     
-    file = path
-    wb = load_workbook(file)
+    if path == '':
+        wb = Workbook()
+        path = 'new_specification.xlsx'
+    else:
+        wb = load_workbook(path)
     
     row = 7
     columns = []
@@ -43,8 +46,8 @@ def save_file(path, settings, info, entry):
         paste_info(workSheet, info[i], row, columns)
         workSheet.cell(row=5, column=1).value = entry
     
-    wb.save(file)
-    os.startfile(file)
+    wb.save(path)
+    os.startfile(path)
 
 def paste_info(workSheet, info, row, columns):
     for row_txt in range(row, row + len(info)): 
