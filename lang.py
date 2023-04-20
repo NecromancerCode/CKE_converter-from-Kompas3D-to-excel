@@ -3,7 +3,7 @@ eng_txt = ["language",
            "The path to the KOMPAS file :", 
            "Specify the KOMPAC assembly file", 
            "The path to the specification .xl :", 
-           "Specify the path to the table with the specification", 
+           "Specify the path to the table \n with the specification", 
            "Conversion to Specification", 
            "Auto positioning", 
            "Detail type", 
@@ -15,8 +15,6 @@ eng_txt = ["language",
            "Comment",
            "Select/Cancel all",
            "Enter the primary application \n or leave it empty"]
-
-
 
 ru_txt = ["language",
           "FAQ",

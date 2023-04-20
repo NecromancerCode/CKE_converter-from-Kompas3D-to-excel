@@ -60,13 +60,13 @@ def interface():
 
         global eng_txt
 
-        window.geometry('400x600')
+        window.geometry('380x622')
         i = "KOMPAS to Exсel convertor v.21"
         window.title(i)
 
-        lbl2.configure(text = eng_txt[2])  
+        lbl1.configure(text = eng_txt[2])  
         btn1.configure(text = eng_txt[3])
-        lbl4.configure(text = eng_txt[4])
+        lbl3.configure(text = eng_txt[4])
         btn2.configure(text = eng_txt[5])
         btn3.configure(text = eng_txt[6])
         chk1.configure(text = eng_txt[7])
@@ -78,7 +78,7 @@ def interface():
         chk7.configure(text = eng_txt[13])
         chk8.configure(text = eng_txt[14])
         chk9.configure(text = eng_txt[15])
-        lbl10.configure(text = eng_txt[16])
+        lbl7.configure(text = eng_txt[16])
         
     def clicked_ru(): # функция смены языка на русский
 
@@ -88,9 +88,9 @@ def interface():
         i = "Конвертор KOMПAC в Exсel v.21"
         window.title(i)
 
-        lbl2.configure(text = ru_txt[2])  
+        lbl1.configure(text = ru_txt[2])  
         btn1.configure(text = ru_txt[3])
-        lbl4.configure(text = ru_txt[4])
+        lbl3.configure(text = ru_txt[4])
         btn2.configure(text = ru_txt[5])
         btn3.configure(text = ru_txt[6])
         chk1.configure(text = ru_txt[7])
@@ -102,7 +102,7 @@ def interface():
         chk7.configure(text = ru_txt[13])
         chk8.configure(text = ru_txt[14])
         chk9.configure(text = ru_txt[15])
-        lbl10.configure(text = ru_txt[16])
+        lbl7.configure(text = ru_txt[16])
 
     def mass_point():
 
@@ -143,33 +143,33 @@ def interface():
     font3 = font.Font(family= "Verdana", size=14, weight="normal", slant="roman") # настройка для текста окна
     font4 = font.Font(family= "Verdana", size=11, weight="bold", slant="roman") # настройка для текста под окном
     
-    lbl2 = Label(window, text=ru_txt[2], font = font2)  
-    lbl2.grid(column=1, row=1)
+    lbl1 = Label(window, text=ru_txt[2], font = font2)  
+    lbl1.grid(column=1, row=1)
 
     txt1 = Entry(window,width=40) 
     txt1.grid(column=1, row=2)    
     btn1 = Button(window, text=ru_txt[3], command=clicked_folder, font = font4, bg="Silver")  
     btn1.grid(column=1, row=3) 
 
-    lbl3 = Label(window, text="")  
-    lbl3.grid(column=1, row=4)
+    lbl2 = Label(window, text="")  
+    lbl2.grid(column=1, row=4)
 
-    lbl4 = Label(window, text=ru_txt[4], font = font2)  
-    lbl4.grid(column=1, row=5) 
+    lbl3 = Label(window, text=ru_txt[4], font = font2)  
+    lbl3.grid(column=1, row=5) 
 
     txt2 = txt2 = Entry(window,width=40) 
     txt2.grid(column=1, row=6)  
     btn2 = Button(window, text=ru_txt[5], command=clicked_xl, font = font4, bg="Silver")  
     btn2.grid(column=1, row=8) 
 
-    lbl6 = Label(window, text="_"*60)  
-    lbl6.grid(column=1, row=10) 
+    lbl4 = Label(window, text="_"*60)  
+    lbl4.grid(column=1, row=10) 
 
-    lbl8 = Label(window, text="_"*60)  
-    lbl8.grid(column=1, row=26)
+    lbl5 = Label(window, text="_"*60)  
+    lbl5.grid(column=1, row=26)
 
-    lbl9 = Label(window, text=" ")  
-    lbl9.grid(column=0, row=30)
+    lbl6 = Label(window, text=" ")  
+    lbl6.grid(column=0, row=30)
     
     btn3 = Button(window, text=ru_txt[6], command=clicked_final, font = font2, bg="LightSlateGray")  
     btn3.grid(column=1, row=27,  ipadx=0, ipady=0, padx=0, pady=0)
@@ -213,10 +213,10 @@ def interface():
     txt3 = Entry(window,width=22, font=font3) 
     txt3.grid(column=1, row=24)
 
-    lbl10 = Label(window, text=ru_txt[16], font = font4)  
-    lbl10.grid(column=1, row=25)
+    lbl7 = Label(window, text=ru_txt[16], font = font4)  
+    lbl7.grid(column=1, row=25)
 
-    chk_state1.set(1)
+    chk_state1.set(1) #активация всех чекбоксов
     chk_state2.set(1)
     chk_state3.set(1)
     chk_state4.set(1)
