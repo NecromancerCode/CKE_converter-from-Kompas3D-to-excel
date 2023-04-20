@@ -226,4 +226,3 @@ def interface():
     chk_state8.set(1)
     
     window.mainloop() #закрытие окна
-interface()
