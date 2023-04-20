@@ -28,7 +28,7 @@ The ```KOMPASS version 18 and older``` is required for the application to work, 
 
 <hr>
 
-## CKE_converter-from-Kompas3D-to-excel_RU
+### CKE_converter-from-Kompas3D-to-excel_RU
 
 **Привет!**
  
@@ -42,6 +42,8 @@ The ```KOMPASS version 18 and older``` is required for the application to work, 
 * Укажите путь к файлу сборки КОМПАС-3d
 * Укажите путь в таблице Excel, куда вы хотите переместить спецификацию
 * Нажмите на кнопку `Конвертация", после этого указанный вами файл Excel автоматически откроется и будет заполнен выбранными данным
+
+<hr>
 
 **Ниже приведены параметры, которые вы можете выбрать для преобразования вашей сборки в спецификацию:**
 
