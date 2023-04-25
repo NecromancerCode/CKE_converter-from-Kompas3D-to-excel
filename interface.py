@@ -42,7 +42,7 @@ def interface():
 
         f.write(fnkomp + "\n" + fnxl + "\n" + str(mass).replace('[', '').replace(']', '') + "\n" + comm) # отсев ковычек из массива
         window.destroy()
-
+    
     def FAQ():
         
         if lbl3.cget("text")  == ru_txt[4]:
@@ -245,5 +245,3 @@ def interface():
     chk_state8.set(1)
     
     window.mainloop() #закрытие окна
-
-interface()
