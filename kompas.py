@@ -94,25 +94,38 @@ def parse_detail(app7, module7, iPart7, workPart, settings):
         if pos == '':
             pos = 0
         pos = int(pos)
+
         dse = iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Раздел спецификации"), "", True, True)[1]
+        if dse == '':
+            dse = iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Тип объекта"), "", True, True)[1]
+        if dse == 'Комплекс': dse = 'Комплексы'
+        if dse == 'Деталь': dse = 'Детали'
+        if dse == 'Стандартное изделие': dse = 'Стандартные изделия'
+        if dse == 'Прочее изделие': dse = 'Прочие изделия'
+        if dse == 'Материал': dse = 'Материалы'
+        if dse == 'Комплект': dse = 'Комплекты'
+        if dse == 'Сборочная единица': dse = 'Сборочные единицы'
+
         marking = iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Обозначение"), "", True, True)[1]
         if marking == '':
             marking += iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Наименование"), "", True, True)[1]
         else:
             marking += ' ' + iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Наименование"), "", True, True)[1]
+        
         value = iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Количество"), "", True, True)[1]
+            # Если количество деталей в свойствах не сходится с количеством в сборке, примем кол-во в сборке за правильное
+        if int(value) < iPart7.InstanceCount(workPart):
+            value = iPart7.InstanceCount(workPart)
+        
         material = iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Материал"), "", True, True)[1]
+        # Если деталь листовая, то добавим толщину к обозначению материала
+        if (dse == 'Детали'):
+            if Body != None:
+                material += ', ' + str(Body.Thickness) + ' мм'
+
         cover = iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Зона"), "", True, True)[1]
         comment = iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Примечание"), "", True, True)[1]
 
-    # Если деталь листовая, то добавим толщину к обозначению материала
-    if (dse == 'Детали'):
-        if Body != None:
-            material += ', ' + str(Body.Thickness) + ' мм'
-    # Если количество деталей в свойствах не сходится с количеством в сборке, примем кол-во в сборке за правильное
-    if int(value) < iPart7.InstanceCount(workPart):
-        value = iPart7.InstanceCount(workPart)
-    
     if len(comment) <= 3 and ('мм' in comment or 'см' in comment or 'м' in comment):
         measure = 'comment'
     else:

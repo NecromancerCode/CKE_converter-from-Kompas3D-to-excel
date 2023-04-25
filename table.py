@@ -50,7 +50,8 @@ def save_file(path, settings, info, entry):
         wb.active = wb[titles[i]]
         workSheet = wb.active
         paste_info(workSheet, info[i], row, columns)
-        workSheet.cell(row=5, column=1).value = entry
+        if entry != '':
+            workSheet.cell(row=5, column=1).value = entry
     
     wb.save(path)
     os.startfile(path)
