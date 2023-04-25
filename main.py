@@ -51,5 +51,4 @@ if kompas_path != '':
         info[i].sort(key = lambda x: x[1] == 'Прочие изделия')
         info[i].sort(key = lambda x: x[1] == 'Материалы')
         info[i].sort(key = lambda x: x[1] == 'Комплекты')
-    print(info)
     table.save_file(xl_path, settings, info, entry)

@@ -106,6 +106,8 @@ def parse_detail(app7, module7, iPart7, workPart, settings):
         if dse == 'Комплект': dse = 'Комплекты'
         if dse == 'Сборочная единица': dse = 'Сборочные единицы'
 
+
+
         marking = iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Обозначение"), "", True, True)[1]
         if marking == '':
             marking += iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Наименование"), "", True, True)[1]
