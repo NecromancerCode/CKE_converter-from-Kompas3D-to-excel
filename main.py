@@ -10,8 +10,13 @@ from os import remove
 
 interface()
 
-file_path = open("settings.txt", encoding='utf-8')
-paths = file_path.readlines()
+try:
+    file_path = open("settings.txt", encoding='utf-8')
+    paths = file_path.readlines()
+    file_path.close()
+    remove("settings.txt",)
+except:
+    paths=''
 
 try:
     kompas_path = paths[0].replace('\n', '')
@@ -23,17 +28,16 @@ try:
 except: 
     xl_path = ''    
 
-variables = paths[2].replace('\n', '')
+try:
+    variables = paths[2].replace('\n', '')
+    settings = [int(numeric_string) for numeric_string in variables.split(", ")]
+except: 
+    settings = []
 
 try:
     entry = paths[3].replace('\n', '')
 except: 
     entry = ''
-
-settings = [int(numeric_string) for numeric_string in variables.split(", ")]
-
-file_path.close()
-remove("settings.txt",)
 
 if kompas_path != '':
     info = kompas.parse_info(kompas_path, settings)
