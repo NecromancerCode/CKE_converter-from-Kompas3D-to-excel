@@ -12,7 +12,19 @@ from lang import eng_txt, ru_txt, FAQ_txt_ru, FAQ_txt_eng
 mass = [1, 1, 1, 1, 1, 1, 1, 1]
 
 def interface():
-   
+
+    def _onKeyRelease(event):
+
+        ctrl  = (event.state & 0x4) != 0
+        if event.keycode==88 and  ctrl and event.keysym.lower() != "x": 
+            event.widget.event_generate("<<Cut>>")
+
+        if event.keycode==86 and  ctrl and event.keysym.lower() != "v": 
+            event.widget.event_generate("<<Paste>>")
+
+        if event.keycode==67 and  ctrl and event.keysym.lower() != "c":
+            event.widget.event_generate("<<Copy>>")
+
     def clicked_folder(): # функция выбора файла
         file = filedialog.askopenfilename()
         txt1.insert(tk.INSERT,file)
@@ -33,7 +45,7 @@ def interface():
 
     def FAQ():
         
-        if lbl2.cget("text")  == ru_txt[2]:
+        if lbl3.cget("text")  == ru_txt[4]:
             messagebox.showinfo('FAQ', FAQ_txt_ru[0])
         else:
             messagebox.showinfo('FAQ', FAQ_txt_eng[0])
@@ -41,17 +53,6 @@ def interface():
     def ch_all():
 
         if chk_state9.get() == 1: 
-
-            chk_state1.set(1)
-            chk_state2.set(1)
-            chk_state3.set(1)
-            chk_state4.set(1)
-            chk_state5.set(1)
-            chk_state6.set(1)
-            chk_state7.set(1)
-            chk_state8.set(1)
-
-        else:
 
             chk_state1.set(0)
             chk_state2.set(0)
@@ -61,6 +62,17 @@ def interface():
             chk_state6.set(0)
             chk_state7.set(0)
             chk_state8.set(0)
+
+        else:
+
+            chk_state1.set(1)
+            chk_state2.set(1)
+            chk_state3.set(1)
+            chk_state4.set(1)
+            chk_state5.set(1)
+            chk_state6.set(1)
+            chk_state7.set(1)
+            chk_state8.set(1)
 
     def clicked_eng(): # функция смены языка на английский
 
@@ -134,6 +146,7 @@ def interface():
     window = Tk()  # открытие окна
     window.title("Конвертор KOMPAC в Exсel v.21")  
     window.geometry('380x600')
+    window.bind_all("<Key>", _onKeyRelease, "+")
 
     menu = Menu(window) # шапка окна 
     new_item = Menu(menu, tearoff=0)  
@@ -232,3 +245,5 @@ def interface():
     chk_state8.set(1)
     
     window.mainloop() #закрытие окна
+
+interface()
