@@ -4,7 +4,7 @@
 # This source code is licensed under the license found in the
 # LICENSE file in the root directory of this source tree.
 
-import kompas, table
+import kompas, table, infosorting
 from interface import interface
 from os import remove
 
@@ -41,14 +41,5 @@ except:
 
 if kompas_path != '':
     info = kompas.parse_info(kompas_path, settings)
-    for i in range(len(info)):
-        info[i].sort(key = lambda x: (x[0], x[2]))
-        info[i].sort(key = lambda x: x[1] == 'Документация')
-        info[i].sort(key = lambda x: x[1] == 'Комплексы')
-        info[i].sort(key = lambda x: x[1] == 'Сборочные еденицы')
-        info[i].sort(key = lambda x: x[1] == 'Детали')
-        info[i].sort(key = lambda x: x[1] == 'Стандартные изделия')
-        info[i].sort(key = lambda x: x[1] == 'Прочие изделия')
-        info[i].sort(key = lambda x: x[1] == 'Материалы')
-        info[i].sort(key = lambda x: x[1] == 'Комплекты')
+    infosorting.info_sort(info)
     table.save_file(xl_path, settings, info, entry)

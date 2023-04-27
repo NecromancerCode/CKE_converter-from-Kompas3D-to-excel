@@ -109,11 +109,12 @@ def parse_detail(app7, module7, iPart7, workPart, settings):
 
 
         marking = iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Обозначение"), "", True, True)[1]
+        name = iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Наименование"), "", True, True)[1]
         if marking == '':
-            marking += iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Наименование"), "", True, True)[1]
+            marking += name
         else:
-            marking += ' ' + iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Наименование"), "", True, True)[1]
-        
+            marking += ' ' + name
+            
         value = iPropertyKeeper.GetPropertyValue(iPropertyMng.GetProperty(VARIANT(pythoncom.VT_EMPTY, None), "Количество"), "", True, True)[1]
             # Если количество деталей в свойствах не сходится с количеством в сборке, примем кол-во в сборке за правильное
         if int(value) < iPart7.InstanceCount(workPart):
