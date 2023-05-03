@@ -11,12 +11,12 @@ def sort_dse(name, info):
         if name in info[i]:
             buf_info.append(info[i])
     buf_info.sort(key = lambda x: sort_func(x[2]))
-    buf_info.sort(key = lambda x: x[0])
     return buf_info
 
 def info_sort(info):
     info_sorted = []
     for i in range(len(info)):
+        info[i].sort(key = lambda x: x[0])
         new_info = []
         buffer = sort_dse('Документация', info[i])
         for k in range(len(buffer)):

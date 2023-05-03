@@ -5,7 +5,6 @@
 # LICENSE file in the root directory of this source tree.
 
 from openpyxl import load_workbook, Workbook
-import openpyxl
 import os
 
 # Функция открытия и записи в таблицу значений, где path - путь до таблицы, cols - массив с массивами строк значений
