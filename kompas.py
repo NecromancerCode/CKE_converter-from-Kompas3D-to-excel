@@ -63,7 +63,7 @@ def parse_assemble(app7, module7, iPart7, iPartCollection7, settings):
 
     for num in range(len(iPartCollection7)):  
         workPart = iPartCollection7.Part(num)    # Цикл перебора деталей
-        if workPart.Name not in parts_array:    # Если деталь до этого не встречалась, берем в работу
+        if workPart.Name not in parts_array:    # Если деталь до этого не встречалась, обрабатываем её
             parts_array.append(workPart.Name)  
             info.append(parse_detail(app7, module7, iPart7, workPart, settings))   # Вызовем функцию получения информации о детали
     
