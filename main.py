@@ -42,5 +42,4 @@ except:
 if kompas_path != '':
     info = kompas.parse_info(kompas_path, settings)
     sorted_info = infosorting.info_sort(info)
-    print(sorted_info)
     table.save_file(xl_path, settings, sorted_info, entry)
